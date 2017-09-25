@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import netlifyIdentity from 'netlify-identity-widget'
 
 class App extends Component {
+  constructor() {
+    super()
+
+    this.handleLogIn = this.handleLogIn.bind(this)
+  }
+
+  handleLogIn () {
+    netlifyIdentity.open()
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,6 +24,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div>
+          <button onClick={this.handleLogIn} >Log in with netlify</button>
+        </div>
       </div>
     );
   }
